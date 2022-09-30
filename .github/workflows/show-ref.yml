@@ -9,9 +9,14 @@ permissions:
 jobs:
   on_trigger:
     name: On trigger
-    runs-on: composite
+    runs-on: ubuntu-latest
     steps:
-      - shell: bash
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: git show-ref
         run: git show-ref
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

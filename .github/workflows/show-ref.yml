@@ -1,0 +1,16 @@
+name: git show-ref
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  on_trigger:
+    name: On trigger
+    runs-on: ubuntu-latest
+    steps:
+      - run: git show-ref
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
